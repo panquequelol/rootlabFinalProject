@@ -35,8 +35,8 @@ function Searchbar({ setSearchResults }: SearchBarProps) {
   }, [searchQuery]);
 
   return (
-    <div className="border border-gray-500 rounded-3xl p-1 flex gap-2">
-      <MagnifyingGlassIcon className="h-8 w-8 shrink-0 text-gray-500" />
+    <div className="border border-gray-300 bg-gray-100 rounded-3xl p-1.5 flex gap-2">
+      <MagnifyingGlassIcon className="h-6 w-6 shrink-0 text-gray-500" />
       <input
         type="search"
         name="search"
@@ -56,7 +56,7 @@ function Searchbar({ setSearchResults }: SearchBarProps) {
             searchInputRef.current?.focus(); // focus back to input once cleared
           }}
         >
-          <XMarkIcon className="h-8 w-8 text-gray-500 shrink-0" />
+          <XMarkIcon className="h-6 w-6 text-gray-500 shrink-0" />
         </button>
       )}
     </div>

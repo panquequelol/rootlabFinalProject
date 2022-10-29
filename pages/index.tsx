@@ -11,7 +11,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className="max-w-lg mx-auto">
+      <main className="max-w-lg mx-auto font-nunito p-4">
         <h2 className="text-xl">Lorem ipsum</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum
