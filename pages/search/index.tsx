@@ -25,6 +25,7 @@ function Search() {
               title={manga.title}
               chapters={manga.chapters}
               genres={manga.genres}
+              mal_id={manga.mal_id}
             />
           ))}
         </div>
