@@ -2,28 +2,43 @@ import Image from "next/image";
 import axios from "axios";
 import Header from "../../components/Header";
 import Manga from "../../inteface/MangaTypes";
+import MangaRecommendation from "../../inteface/MangaRecommendationTypes";
+import Link from "next/link";
+import Head from "next/head";
 
 export async function getServerSideProps(context: any) {
   const { id } = context.query;
-  const { data: result } = await axios.get(
+  const { data: mangaDetailsResults } = await axios.get(
     `https://api.jikan.moe/v4/manga/${id}`
   );
-  const { data } = result;
+  const { data: recommendationsResults } = await axios.get(
+    `https://api.jikan.moe/v4/manga/${id}/recommendations`
+  );
 
   return {
     props: {
-      manga: data,
+      manga: mangaDetailsResults.data,
+      recommendations: recommendationsResults.data,
     },
   };
 }
 
 interface MangaDetailsProps {
   manga: Manga;
+  recommendations: MangaRecommendation[];
 }
 
-function MangaDetails({ manga }: MangaDetailsProps) {
+function MangaDetails({ manga, recommendations }: MangaDetailsProps) {
   return (
     <>
+      <Head>
+        <title>MangaSee - {manga.title}</title>
+        <meta
+          name="description"
+          content={`Details about the manga ${manga.title} by ${manga.authors[0].name}`}
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <Header />
       <main className="max-w-6xl mx-auto p-4">
         <div className="grid md:grid-cols-2 gap-4">
@@ -85,6 +100,28 @@ function MangaDetails({ manga }: MangaDetailsProps) {
             </div>
           </div>
         </div>
+        <section className="space-y-4">
+          <p className="font-bold text-xl">Some other manga you might like</p>
+          <ul className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8 gap-4">
+            {recommendations.map(({ entry: manga }) => (
+              <li key={manga.mal_id}>
+                <Link
+                  href={`/${manga.mal_id}`}
+                  className="flex flex-col items-center gap-2 hover:brightness-90 transition-all duration-300 h-full w-full bg-gray-100 border border-gray-200 rounded p-1"
+                >
+                  <Image
+                    src={manga.images.webp.small_image_url}
+                    width="500"
+                    height="500"
+                    alt={`${manga.title} manga cover`}
+                    className="w-20 rounded"
+                  />
+                  <p className="text-center font-semibold">{manga.title}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       </main>
     </>
   );
