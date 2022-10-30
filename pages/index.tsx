@@ -14,14 +14,41 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
-      <main className="max-w-lg mx-auto font-nunito p-4">
-        <h2 className="text-xl">Lorem ipsum</h2>
+      <main className="max-w-lg mx-auto font-nunito p-4 space-y-2 text-center">
+        <h2 className="text-2xl font-black">
+          Details about your favorite manga!
+        </h2>
         <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Lorem ipsum
-          dolor sit amet consectetur, adipisicing elit. Officia undeLorem ipsum
-          dolor sit amet consectetur
+          Search for mangas, and get details and recommendations more manga to
+          read :)
         </p>
-        <button className="p-2 bg-black text-white">Call to action</button>
+        <button className="py-2 px-4 bg-black text-white hover:brightness-90 transition-all duration-300 rounded-3xl">
+          Start searching now!
+        </button>
+        <p className="text-xl py-12">
+          <h1>René Cáceres</h1>
+          <p>rene@outlook.my</p>
+          <ul className="text-blue-400 italic underline">
+            <li>
+              <a
+                href="https://github.com/panquequelol"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Github profile
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.linkedin.com/in/renecaceresdeveloper/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn profile
+              </a>
+            </li>
+          </ul>
+        </p>
       </main>
     </div>
   );
