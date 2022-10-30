@@ -1,5 +1,5 @@
 import Head from "next/head";
-import Image from "next/image";
+import Link from "next/link";
 import Header from "../components/Header";
 
 export default function Home() {
@@ -22,9 +22,12 @@ export default function Home() {
           Search for mangas, and get details and recommendations more manga to
           read :)
         </p>
-        <button className="py-2 px-4 bg-black text-white hover:brightness-90 transition-all duration-300 rounded-3xl">
+        <Link
+          href="/search"
+          className="py-2 px-4 bg-black text-white hover:brightness-90 transition-all duration-300 rounded-3xl"
+        >
           Start searching now!
-        </button>
+        </Link>
         <p className="text-xl py-12">
           <h1>René Cáceres</h1>
           <p>rene@outlook.my</p>
